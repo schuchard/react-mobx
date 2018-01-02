@@ -30,6 +30,8 @@ store.todos[0].finished = true;
 
 userStore.addUserToList({ name: 'Jenna', age: 32, city: 'Fort Collins', state: 'CO' });
 userStore.addUserToList({ name: 'Bill', age: 22, city: 'Dallas', state: 'TX' });
+userStore.addUserToList({ name: 'Joe', age: 54, city: 'Los Angeles', state: 'CA' });
+userStore.addUserToList({ name: 'Carl', age: 34, city: 'Denver', state: 'CO' });
 
 // playing around in the console
 window.store = store;

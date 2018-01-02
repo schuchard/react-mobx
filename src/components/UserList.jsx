@@ -10,26 +10,19 @@ class UserList extends React.Component {
   @observable userId = '';
 
   render() {
-    return (
-      <div>
+    return <div>
         <hr />
+        <h3>User list</h3>
         <form onSubmit={this.handleFormSubmit}>
           ID:
           <input type="text" name="userId" value={this.userId} onChange={this.handleInputChange} />
           Update state code:
-          <input
-            type="text"
-            name="stateCode"
-            value={this.stateCode}
-            onChange={this.handleInputChange}
-          />
+          <input type="text" name="stateCode" value={this.stateCode} onChange={this.handleInputChange} />
           <button type="click">Update</button>
         </form>
 
-        <h3>User list</h3>
         <ul>{this.props.store.users.map((user) => <User user={user} key={user.id} />)}</ul>
-      </div>
-    );
+      </div>;
   }
 
   @action
