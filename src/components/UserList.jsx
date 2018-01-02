@@ -15,28 +15,39 @@ class UserList extends React.Component {
         <hr />
         <form onSubmit={this.handleFormSubmit}>
           ID:
-          <input type="text" value={this.id} onChange={this.handleId} />
+          <input type="text" name="id" value={this.id} onChange={this.handleInputChange} />
           Update state code:
-          <input type="text" value={this.stateCode} onChange={this.handleState} />
+          <input
+            type="text"
+            name="stateCode"
+            value={this.stateCode}
+            onChange={this.handleInputChange}
+          />
           <button type="click">Update</button>
         </form>
+
         <h3>User list</h3>
         <ul>{this.props.store.users.map((user) => <User user={user} key={user.id} />)}</ul>
       </div>
     );
   }
 
-  handleId = (e) => {
-    this.id = e.target.value;
-  };
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
-  handleState = (e) => {
-    this.stateCode = e.target.value;
+    this[name] = value;
   };
 
   @action
   handleFormSubmit = (e) => {
-    this.props.store.updateUserStateCode(this.id, this.stateCode);
+    if (this.id && this.stateCode) {
+      this.props.store.updateUserStateCode(this.id, this.stateCode);
+      this.id = '';
+      this.stateCode = '';
+    }
+
     e.preventDefault();
   };
 }
