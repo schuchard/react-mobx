@@ -6,8 +6,8 @@ import User from './User';
 
 @observer
 class UserList extends React.Component {
-  @observable stateCode;
-  @observable id;
+  @observable stateCode = '';
+  @observable userId = '';
 
   render() {
     return (
@@ -15,7 +15,7 @@ class UserList extends React.Component {
         <hr />
         <form onSubmit={this.handleFormSubmit}>
           ID:
-          <input type="text" name="id" value={this.id} onChange={this.handleInputChange} />
+          <input type="text" name="userId" value={this.userId} onChange={this.handleInputChange} />
           Update state code:
           <input
             type="text"
@@ -32,6 +32,7 @@ class UserList extends React.Component {
     );
   }
 
+  @action
   handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -42,9 +43,9 @@ class UserList extends React.Component {
 
   @action
   handleFormSubmit = (e) => {
-    if (this.id && this.stateCode) {
-      this.props.store.updateUserStateCode(this.id, this.stateCode);
-      this.id = '';
+    if (this.userId && this.stateCode) {
+      this.props.store.updateUserStateCode(this.userId, this.stateCode);
+      this.userId = '';
       this.stateCode = '';
     }
 

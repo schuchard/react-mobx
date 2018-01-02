@@ -20,7 +20,7 @@ class TodoList extends React.Component {
         <ul>{this.props.store.todos.map((todo) => <Todo todo={todo} key={todo.id} />)}</ul>
         Tasks left: {this.props.store.unfinishedTodoCount}
         <div>
-          <button onClick={this.handleUncheck}>Reset Todos</button>
+          <button onClick={this.handleUnCheck}>Reset Todos</button>
         </div>
       </div>
     );
@@ -32,7 +32,7 @@ class TodoList extends React.Component {
   };
 
   @action
-  handleUncheck = (e) => {
+  handleUnCheck = (e) => {
     this.props.store.unCheckAllTodos();
     e.preventDefault();
   };
