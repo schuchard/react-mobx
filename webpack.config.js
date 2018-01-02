@@ -3,25 +3,27 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'eval',
-  entry: [
-    './src/index'
-  ],
+  entry: ['./src/index'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/static/',
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   module: {
-    rules: [{
-      test: /\.jsx?$/,
-      use: ['babel-loader'],
-      include: path.join(__dirname, 'src')
-    }]
-  }
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: ['babel-loader'],
+        include: path.join(__dirname, 'src'),
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
 };
