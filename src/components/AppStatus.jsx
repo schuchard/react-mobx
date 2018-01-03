@@ -31,4 +31,5 @@ export default AppStatus;
 
 const TodoStatusContainer = styled.div`
   background-color: ${(props) => (props.finished ? 'greenyellow' : '')};
+  margin: 15px 0;
 `;
