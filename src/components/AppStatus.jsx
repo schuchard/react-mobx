@@ -3,6 +3,7 @@ import { observable, action, computed } from 'mobx';
 import { observer } from 'mobx-react';
 
 import { Line } from 'rc-progress';
+import styled from 'styled-components';
 
 @observer
 class AppStatus extends React.Component {
@@ -13,7 +14,7 @@ class AppStatus extends React.Component {
 
   render() {
     return (
-      <div className={this.finished ? 'todos-finished' : ''}>
+      <TodoStatusContainer finished={this.finished}>
         {this.finished ? 'All done!' : 'Keep going'}
         <Line
           percent={this.props.store.todoProgress}
@@ -21,9 +22,13 @@ class AppStatus extends React.Component {
           strokeColor="#40a580"
           trailColor="#ededed"
         />
-      </div>
+      </TodoStatusContainer>
     );
   }
 }
 
 export default AppStatus;
+
+const TodoStatusContainer = styled.div`
+  background-color: ${(props) => (props.finished ? 'greenyellow' : '')};
+`;
